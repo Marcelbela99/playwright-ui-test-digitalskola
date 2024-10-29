@@ -8,4 +8,4 @@ class DashboardPage {
         return await this.page.isVisible(this.inventoryList);
     }
 }
-module.exports = DashboardPage;
+export default DashboardPage;

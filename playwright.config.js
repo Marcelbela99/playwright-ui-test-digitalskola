@@ -1,7 +1,7 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
-module.exports = defineConfig({
+export default defineConfig({
   testDir: './tests',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
@@ -12,13 +12,13 @@ module.exports = defineConfig({
   ],
   projects: [
     {
-      name: 'chromium' ,
+      name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    }
+    },
   ],
   
-  use: { 
-    trace: 'on-first-retry',
+  use: {
+    screenshot: 'on', // Enable screenshots for visual assertion
   },
-});
 
+});

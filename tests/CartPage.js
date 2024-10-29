@@ -13,4 +13,4 @@ class CartPage {
         return await this.page.isVisible(this.cartBadge);
     }
 }
-module.exports = CartPage;
+export default CartPage;

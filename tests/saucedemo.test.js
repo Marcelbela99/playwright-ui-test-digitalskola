@@ -1,4 +1,18 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
+import LoginPage from './LoginPage.js';
+
+let loginPage;
+
+test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page);
+});
+
+test('User login with visual assertion', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.takeScreenshot(); // Visual assertion untuk halaman login
+});
 
 test.describe('SauceDemo Test', () => {
   
@@ -21,7 +35,10 @@ test.describe('SauceDemo Test', () => {
     // Step Validate that the cart icon shows 1 item
     const cartBadge = page.locator('.shopping_cart_badge');
     await expect(cartBadge).toHaveText('1');
-  });
+
+     // Step Take a screenshot of the dashboard for visual verification
+    await loginPage.takeScreenshot(); 
+  })
 
 });
 
